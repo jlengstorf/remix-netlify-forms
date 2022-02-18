@@ -8,7 +8,7 @@ export default function Index() {
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
+      body: JSON.stringify({
         'form-name': event.target.getAttribute('name'),
         name: data.get('name'),
         email: data.get('email'),
