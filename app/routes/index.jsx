@@ -26,6 +26,7 @@ export default function Index() {
         name="Test Form"
         data-netlify="true"
         action="/thanks/"
+        onSubmit={handleSubmit}
       >
         <label>
           Name
