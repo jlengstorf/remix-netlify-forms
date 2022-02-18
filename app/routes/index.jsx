@@ -5,7 +5,9 @@ export default function Index() {
     const form = event.target;
     const data = new FormData(form);
 
-    fetch('/', {
+    // Netlify will accept form submissions to any valid URL
+    // by submitting to a static file we skip Remix's POST catcher
+    fetch('/favicon.ico', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: JSON.stringify({
@@ -14,7 +16,9 @@ export default function Index() {
         email: data.get('email'),
       }),
     })
-      .then(() => navigate('/thanks/'))
+      .then(() => {
+        window.location.href = '/thanks/';
+      })
       .catch((error) => alert(error));
   };
 
