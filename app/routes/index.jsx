@@ -10,11 +10,7 @@ export default function Index() {
     fetch('/favicon.ico', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: JSON.stringify({
-        'form-name': event.target.getAttribute('name'),
-        name: data.get('name'),
-        email: data.get('email'),
-      }),
+      body: new URLSearchParams(data).toString(),
     })
       .then(() => {
         window.location.href = '/thanks/';
@@ -32,6 +28,8 @@ export default function Index() {
         action="/thanks/"
         onSubmit={handleSubmit}
       >
+        <input name="form-name" value="Test Form" type="hidden" />
+
         <label>
           Name
           <input name="name" type="text" />
